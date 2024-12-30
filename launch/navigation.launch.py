@@ -13,7 +13,6 @@ import rclpy
 def generate_launch_description():
     logger = rclpy.logging.get_logger('navigation_launch')
 
-    stretch_core_path = get_package_share_directory('stretch_core')
     stretch_navigation_path = get_package_share_directory('stretch_nav2')
     navigation_bringup_path = get_package_share_directory('nav2_bringup')
     
@@ -57,13 +56,6 @@ def generate_launch_description():
         
     rviz_param = DeclareLaunchArgument('use_rviz', default_value='true', choices=['true', 'false'])
 
-    stretch_driver_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([stretch_core_path, '/launch/stretch_driver.launch.py']),
-        launch_arguments={'mode': 'navigation', 'broadcast_odom_tf': 'True'}.items())
-
-    rplidar_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([stretch_core_path, '/launch/rplidar.launch.py']))
-
     base_teleop_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([stretch_navigation_path, '/launch/teleop_twist.launch.py']),
         launch_arguments={'teleop_type': LaunchConfiguration('teleop_type')}.items())
@@ -87,8 +79,6 @@ def generate_launch_description():
         map_path_param,
         params_file_param,
         rviz_param,
-        stretch_driver_launch,
-        rplidar_launch,
         base_teleop_launch,
         navigation_bringup_launch,
         rviz_launch,

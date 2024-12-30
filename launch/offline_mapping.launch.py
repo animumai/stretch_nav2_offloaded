@@ -9,7 +9,6 @@ from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory, get_package_share_path
 
 def generate_launch_description():
-    stretch_core_path = get_package_share_directory('stretch_core')
     stretch_navigation_path = get_package_share_directory('stretch_nav2')
     navigation_package = str(get_package_share_path("stretch_nav2"))
 
@@ -23,13 +22,6 @@ def generate_launch_description():
         default_value='false',
         description='Use simulation/Gazebo clock')
 
-    stretch_driver_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([stretch_core_path, '/launch/stretch_driver.launch.py']),
-        launch_arguments={'mode': 'navigation', 'broadcast_odom_tf': 'True'}.items())
-
-    rplidar_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([stretch_core_path, '/launch/rplidar.launch.py']))
-
     base_teleop_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([stretch_navigation_path, '/launch/teleop_twist.launch.py']),
         launch_arguments={'teleop_type': LaunchConfiguration('teleop_type')}.items())
@@ -42,8 +34,6 @@ def generate_launch_description():
         rviz_param,
         teleop_type,
         declare_use_sim_time_argument,
-        stretch_driver_launch,
-        rplidar_launch,
         base_teleop_launch,
         rviz_launch,
     ])

@@ -23,6 +23,23 @@ ros2 launch stretch_core rplidar.launch.py
 
 The *stretch_nav2* package provides the standard ROS 2 navigation stack (Nav2) with its launch files. This package utilizes slam_toolbox and Nav2 to drive Stretch around a mapped space.
 
+Make sure to have ROS2 humble installed and create a workspace directory:
+
+```bash
+source /opt/ros/humble/setup.bash
+mkdir -p ~/ament_ws/src
+cd ~/ament_ws/src/
+```
+
+Also, make sure to have nav2 installed:
+
+```bash
+sudo apt install ros-humble-navigation2
+sudo apt install ros-humble-nav2-bringup
+```
+
+Finally, clone this repository using https or ssh and then `colcon build` the ROS2 package.
+
 ## Mapping
 
 The first step is to map the space that the robot will navigate in. The `offline_mapping.launch.py` will enable you to do this. In this setup, the robot will be teleoperated through a joystick (default) or keyboard (check below). If you are using the joystick, make sure to connect the controller provided by Stretch to the computer. By default, */dev/input/js0* is used, but this can be changed in *launch/teleop_twist.launch.py* with whatever ID your device uses. You can check this using `lsusb` in a terminal.

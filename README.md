@@ -23,7 +23,7 @@ ros2 launch stretch_core rplidar.launch.py
 
 The *stretch_nav2* package provides the standard ROS 2 navigation stack (Nav2) with its launch files. This package utilizes slam_toolbox and Nav2 to drive Stretch around a mapped space.
 
-Make sure to have ROS2 humble installed and create a workspace directory:
+Make sure to have ROS2 humble installed and create a workspace directory (I use *ament_ws* but you can use another name):
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -38,7 +38,14 @@ sudo apt install ros-humble-navigation2
 sudo apt install ros-humble-nav2-bringup
 ```
 
-Finally, clone this repository using https or ssh and then `colcon build` the ROS2 package.
+Finally, clone this repository using https or ssh and then build the ROS2 package (remember to source your workspace afterwards):
+
+```bash
+# git clone https or ssh
+cd ~/ament_ws
+colcon build
+source install/setup.bash
+```
 
 ## Mapping
 

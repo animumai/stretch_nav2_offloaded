@@ -87,6 +87,8 @@ Next, with `<map_name>.yaml`, we can navigate the robot around the mapped space.
 ros2 launch stretch_nav2 navigation.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
+Note: you might need to run ```export HELLO_FLEET_PATH=~/stretch_user``` again if you cannot find the map.
+
 A new RViz window should pop up with a `Startup` button in a menu at the bottom left of the window. Press the `Startup` button (if it's not already pressed by default) to kick-start all navigation related lifecycle nodes. Rviz will show the robot in the previously mapped space, however, it's likely that the robot's location on the map does not match the robot's location in the real space. To correct this, from the top bar of Rviz, use `2D Pose Estimate` to lay an arrow down roughly where the robot is located in the real space. This gives an initial estimate of the robot's location to AMCL, the localization package. AMCL will better localize the robot once we pass the robot a `2D Nav Goal`.
 
 In the top bar of Rviz, use `2D Nav Goal` to lay down an arrow where you'd like the robot to navigate. In the terminal, you'll see Nav2 go through the planning phases and then navigate the robot to the goal. If planning fails, the robot will begin a recovery behavior - spinning around 180 degrees in place or backing up.

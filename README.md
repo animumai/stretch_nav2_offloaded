@@ -11,7 +11,7 @@ stretch_free_robot_process.py
 2. Launch Stretch main driver:
 ```bash
 # Terminal 1: Start the Stretch Driver Node
-ros2 launch stretch_core stretch_driver.launch.py
+ros2 launch stretch_core stretch_driver.launch.py mode:=navigation broadcast_odom_tf:=True
 ```
 3. Launch LiDAR:
 ```bash

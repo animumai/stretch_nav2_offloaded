@@ -21,7 +21,7 @@ ros2 launch stretch_core rplidar.launch.py
 
 # Deploy on external computer
 
-The *stretch_nav2* package provides the standard ROS 2 navigation stack (Nav2) with its launch files. This package utilizes slam_toolbox and Nav2 to drive Stretch around a mapped space.
+The *stretch_nav2_offloaded* package provides the standard ROS 2 navigation stack (Nav2) with its launch files. This package utilizes slam_toolbox and Nav2 to drive Stretch around a mapped space.
 
 Make sure to have ROS2 humble installed and create a workspace directory (I use *ament_ws* but you can use another name):
 
@@ -54,7 +54,7 @@ The first step is to map the space that the robot will navigate in. The `offline
 Next, run:
 
 ```bash
-ros2 launch stretch_nav2 offline_mapping.launch.py
+ros2 launch stretch_nav2_offloaded offline_mapping.launch.py
 ```
 
 Rviz will show the robot and the map that is being constructed. With the terminal open, use the joystick (see instructions below for using a keyboard) to teleoperate the robot around. Avoid sharp turns and revisit previously visited spots to form loop closures. In Rviz, once you see a map that has reconstructed the space well enough, open a new terminal and run the following commands to create a `stretch_user/` directory (if you don't have it) and an environmental variable.
@@ -84,7 +84,7 @@ eog ${HELLO_FLEET_PATH}/maps/<map_name>.pgm
 Next, with `<map_name>.yaml`, we can navigate the robot around the mapped space. Run:
 
 ```bash
-ros2 launch stretch_nav2 navigation.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
+ros2 launch stretch_nav2_offloaded navigation.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
 Note: you might need to run ```export HELLO_FLEET_PATH=~/stretch_user``` again if you cannot find the map.
@@ -104,11 +104,11 @@ The launch files expose the launch argument "teleop_type". By default, this argu
 If the xbox controller is not available, the following commands will launch mapping and navigation, respectively, with keyboard teleop:
 
 ```bash
-ros2 launch stretch_nav2 offline_mapping.launch.py teleop_type:=keyboard
+ros2 launch stretch_nav2_offloaded offline_mapping.launch.py teleop_type:=keyboard
 ```
 or
 ```bash
-ros2 launch stretch_nav2 navigation.launch.py teleop_type:=keyboard map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
+ros2 launch stretch_nav2_offloaded navigation.launch.py teleop_type:=keyboard map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
 ## License

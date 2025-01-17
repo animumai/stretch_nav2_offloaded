@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>stretch_nav2</name>
+  <name>stretch_nav2_offloaded</name>
   <version>0.0.1</version>
-  <description>The stretch_nav2 package</description>
-  <maintainer email="support@hello-robot.com">Hello Robot Inc.</maintainer>
+  <description>The stretch_nav2 package offloaded</description>
+  <maintainer email="victor@animum.ai">Victor Nan Fernandez-Ayala</maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

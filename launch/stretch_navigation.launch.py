@@ -10,7 +10,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     stretch_core_path = get_package_share_directory('stretch_core')
-    stretch_navigation_path = get_package_share_directory('stretch_nav2')
+    stretch_navigation_path = get_package_share_directory('stretch_nav2_offloaded')
     navigation_bringup_path = get_package_share_directory('nav2_bringup')
     
     teleop_type_param = DeclareLaunchArgument(
@@ -31,13 +31,6 @@ def generate_launch_description():
         default_value=os.path.join(stretch_navigation_path,
                                    'map', 'home2.yaml'),
         description='Full path to the map.yaml file to use for navigation')
-
-    stretch_driver_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([stretch_core_path, '/launch/stretch_driver.launch.py']),
-        launch_arguments={'mode': 'navigation', 'broadcast_odom_tf': 'True'}.items())
-
-    rplidar_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([stretch_core_path, '/launch/rplidar.launch.py']))
 
     base_teleop_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([stretch_navigation_path, '/launch/teleop_twist.launch.py']),
@@ -63,8 +56,6 @@ def generate_launch_description():
         use_sim_time_param,
         autostart_param,
         map_path_param,
-        stretch_driver_launch,
-        rplidar_launch,
         base_teleop_launch,
         navigation_bringup_launch,
         rviz_launch,

@@ -13,7 +13,7 @@ import rclpy
 def generate_launch_description():
     logger = rclpy.logging.get_logger('navigation_launch')
 
-    stretch_navigation_path = get_package_share_directory('stretch_nav2')
+    stretch_navigation_path = get_package_share_directory('stretch_nav2_offloaded')
     navigation_bringup_path = get_package_share_directory('nav2_bringup')
     
     teleop_type_param = DeclareLaunchArgument(

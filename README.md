@@ -111,6 +111,7 @@ or
 ros2 launch stretch_nav2_offloaded navigation.launch.py teleop_type:=keyboard map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
-## License
+---
 
-For license information, please see the LICENSE files.
+**Maintainer**: [Victor Nan Fernandez-Ayala](mailto:victor@animum.ai)
+**License**: Copyright Animum AB 2025

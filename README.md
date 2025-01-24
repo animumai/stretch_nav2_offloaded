@@ -113,5 +113,5 @@ ros2 launch stretch_nav2_offloaded navigation.launch.py teleop_type:=keyboard ma
 
 ---
 
-**Maintainer**: [Victor Nan Fernandez-Ayala](mailto:victor@animum.ai)
+**Maintainer**: [Victor Nan Fernandez-Ayala](mailto:victor@animum.ai)  
 **License**: Copyright Animum AB 2025

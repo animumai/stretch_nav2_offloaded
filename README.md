@@ -111,6 +111,47 @@ or
 ros2 launch stretch_nav2_offloaded navigation.launch.py teleop_type:=keyboard map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
 ```
 
+### Nav2 with depth voxels through STVL layer
+
+Install STVL plugin:
+```bash
+sudo apt install ros-<ros2-distro>-spatio-temporal-voxel-layer
+```
+
+Install OpenVDB 10.x:
+1. Create a folder to clone openvdb on:
+```bash
+cd ~/Downloads
+git clone git@github.com:AcademySoftwareFoundation/openvdb.git
+```
+
+2. Move to correct OPenVDB:
+```bash
+cd ~/Downloads/openvdb
+git checkout v10.0.0
+```
+
+3. Then proceed with the build:
+
+```bash
+mkdir -p build && cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
+make -j$(nproc)
+sudo make install
+sudo ldconfig
+```
+
+4. After installation, verify the library is available:
+```bash
+ldconfig -p | grep openvdb
+```
+You should see an entry for libopenvdb.so.10.0 (likely in /usr/local/lib).
+
+Execute STVL Nav2 navigation:
+```bash
+ros2 launch stretch_nav2_offloaded navigation_voxel.launch.py map:=${HELLO_FLEET_PATH}/maps/<map_name>.yaml
+```
+
 ---
 
 **Maintainer**: [Victor Nan Fernandez-Ayala](mailto:victor@animum.ai)  

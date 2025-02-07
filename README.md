@@ -126,6 +126,7 @@ git clone git@github.com:AcademySoftwareFoundation/openvdb.git
 
 2. Move to correct OPenVDB:
 ```bash
+cd openvdb
 git checkout v10.0.0
 ```
 

@@ -121,13 +121,11 @@ sudo apt install ros-<ros2-distro>-spatio-temporal-voxel-layer
 Install OpenVDB 10.x:
 1. Create a folder to clone openvdb on:
 ```bash
-cd ~/Downloads
 git clone git@github.com:AcademySoftwareFoundation/openvdb.git
 ```
 
 2. Move to correct OPenVDB:
 ```bash
-cd ~/Downloads/openvdb
 git checkout v10.0.0
 ```
 

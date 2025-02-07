@@ -186,7 +186,7 @@ local_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 1.0
-        inflation_radius: 0.25
+        inflation_radius: 0.3
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
@@ -220,7 +220,7 @@ local_costmap:
           marking: true
           clearing: true
           obstacle_range: 3.0
-          min_obstacle_height: 1.0
+          min_obstacle_height: 0.4
           max_obstacle_height: 2.0
           expected_update_rate: 0.0
           observation_persistence: 0.0
@@ -307,7 +307,7 @@ global_costmap:
           marking: true
           clearing: true
           obstacle_range: 3.0
-          min_obstacle_height: 1.0
+          min_obstacle_height: 0.4
           max_obstacle_height: 2.0
           expected_update_rate: 0.0
           observation_persistence: 0.0
@@ -346,8 +346,8 @@ global_costmap:
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 1.0
-        inflation_radius: 0.25
+        cost_scaling_factor: 3.0
+        inflation_radius: 0.3
       always_send_full_costmap: True
 
 map_server:

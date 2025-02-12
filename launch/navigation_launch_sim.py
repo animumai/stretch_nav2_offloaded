@@ -26,6 +26,18 @@ from nav2_common.launch import RewrittenYaml
 def generate_launch_description():
     # Get the launch directory
     bringup_dir = get_package_share_directory('nav2_bringup')
+    stretch_nav2_offloaded_dir = get_package_share_directory('stretch_nav2_offloaded')
+
+    bt_xml_navigate_through_poses = os.path.join(
+        stretch_nav2_offloaded_dir,
+        'config',
+        'navigate_w_replanning_and_recovery_wo_spin.xml'
+    )
+    bt_xml_navigate_to_pose = os.path.join(
+        stretch_nav2_offloaded_dir,
+        'config',
+        'navigate_to_pose_w_replanning_and_recovery_wo_spin.xml'
+    )
 
     namespace = LaunchConfiguration('namespace')
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -54,7 +66,9 @@ def generate_launch_description():
     # Create our own temporary YAML files that include substitutions
     param_substitutions = {
         'use_sim_time': use_sim_time,
-        'autostart': autostart}
+        'autostart': autostart,
+        'bt_navigator.ros__parameters.default_nav_through_poses_bt_xml': bt_xml_navigate_through_poses,
+        'bt_navigator.ros__parameters.default_nav_to_pose_bt_xml': bt_xml_navigate_to_pose}
 
     configured_params = RewrittenYaml(
             source_file=params_file,
